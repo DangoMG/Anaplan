@@ -9,6 +9,11 @@ A: Anaplan is a cloud-based (SaaS), enterprise-grade planning platform that enab
 workforce, and other business functions that sits on AWS/GCP servers; built on a patented in-memory calculation engine called Hyperblock, which 
 allows for fast calculations and data updates across large, complex datasets
 
+Q: Can you explain the concept of Hub-to-Spoke as it pertains to Anaplan?
+C: (Looking for both functional/technical conceptualization of the relationship/flow of data)
+A: In Anaplan, a hub is considered the upstream-most, centralized model (generally the Data Hub) that receives initial inbound data that is then distributed to the appropriate
+downstream model(s) (ex. Comp Expense Planning, Topline, OpEx, etc.); purpose is to delineate functional data from raw data + helps manage sparsity
+
 Q: What are modules, lists, and line items in Anaplan?
 C: (Fundamental building blocks of Anaplan)
 A: Lists = the dimensions | Modules = the workspace where planning happens | Line Items = the data/calculations inside module
@@ -41,31 +46,41 @@ parent levels or totals are calculated, impacting both accuracy and performance 
 
 Q: What is the difference between a formula and a function in Anaplan?
 C: (Testing how well you understand syntax vs. business logic)
-A: 
+A: A formula is the full expression written in a line item to perform a calculation or logic vs A function is a specific built-in keyword (like SUM, LOOKUP, or IF) 
+used within a formula to perform a defined operation | In short, functions are building blocks, and formulas are the full statements that use them
 
 Q: How does time dimension work in Anaplan? Can you customize it?
 C: (Checks knowledge of time-based modeling)
-A:
+A: Time dimension in Anaplan is a built-in dimension that allows planning over periods like months, quarters, and years; can customize it by setting the time scale (e.g., monthly, weekly), 
+time range, fiscal year start, and by creating custom time ranges for more flexible planning needs
 
 Q: What is ALM (Application Lifecycle Management) in Anaplan? Have you used it before?
 C: (Even at L1, basic awareness of Dev vs. Prod models is useful)
-A:
+A: ALM allows you to manage changes between development (DEV), test (TEST), and production (PROD) models using a structured deployment process; helps ensure model updates are tested before 
+going live, reducing the risk of errors (ex. yes, I’ve used ALM to move changes safely from a Dev model to Prod using revision tags and model synchronization)
 
 Q: Explain the use of Selective Access in Anaplan. How do you implement it?
 C: (Tests understanding of user security and access controls)
-A:
+A: Selective Access restricts user access to specific list items (like certain regions or departments) so they only see or edit relevant data; its implemented by enabling selective access 
+on a list and assigning read/write access to users through the Users settings or import actions (ideally used with a staging module + action with semi-automation via CloudWorks
 
 Q: What is a Data Hub, and why is it important in model design?
 C: (Shows awareness of scalable architecture)
-A: 
+A: Data Hub is a centralized model used to store and manage raw data before distributing it to spoke models; improves data integrity, reduces duplication, and simplifies integration 
+by acting as the single source of truth for all connected models
 
 Q: Have you worked with import/export actions in Anaplan? How do you handle failed imports?
 C: (Practical experience with data integration)
-A: 
+A: Yes, I’ve worked with import/export actions to load data into modules, lists, and users, and to export reports or data extracts; if an import fails, I check the error logs, 
+validate the source file format, ensure list mappings are correct, and verify that all required fields are included
 
 Q: What is a saved view and how is it different from a module view?
 C: (Important for creating imports/exports and dashboards)
-A: 
+A: A saved view is a customized layout of a module with specific filters, sorting, or selected dimensions, saved for reuse; unlike the default module view, saved views are 
+often used in import/export actions and dashboards to display or move specific data in a controlled format
 
-What are some best practices for improving model performance?
-(Shows awareness of scalability and efficiency)
+Q: What are some best practices for improving model performance?
+C: (Shows awareness of scalability and efficiency)
+A: Avoid using SELECT function; Using system modules to centralize logic and avoid duplication; Minimizing use of TEXT and IF THEN ELSE statements in large calculations; Applying 
+summary methods appropriately; Avoiding unnecessary dimensions in modules; Using line item subsets and views efficiently; Keeping the model clean by archiving unused lists, 
+modules, and actions; These practices help improve speed, scalability, and maintainability.
