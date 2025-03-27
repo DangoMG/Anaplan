@@ -1,1 +1,36 @@
+--------------
+--- Theory ---
+--------------
+> SELECT is used for pulling an exact hardcoded item - we just don't use it bc it lacks the dynamic capability needed in Anaplan 
+
+> LOOKUP is used when referencing an item for directly based on mapping needs
+  -- For example, I am referencing a SYS module where there is a one to one relationship between Executive and a Cost Center
+      'SYS: Exec_to_CC_Mapping[LOOKUP: 'CALC: Employee Details'.Cost Center]
+
+> SUM is used when aggregating values based on a set of criteria
+  -- For example, I want the total sales by department, cost center, and date
+      'DATA: Sales'.Amount[SUM: 'DATA: Sales'.Date, SUM:'DATA: Sales'.Department, SUM:'DATA: Sales'.Cost Center]
+
+----------------
+--- Use Case ---
+----------------
+> SUM is ideal for pulling large sets of values that need to be compiled based on criteria as mentioned above
+> LOOKUP is ideal for getting single bits of data based on a direct relationship 
+
+------------------------
+--- Syntax Breakdown ---
+------------------------ 
+> The easiest to think of it, "I want data from A based on criterion X, Y, Z"
+> Let's break that down:
+  -- A represents the column or row where the desired data resides
+    -- For ex. lets say we have a DATA module with 3 columns: Amount, Departments, & Date (horrible example but bear with me)
+    -- We want to pull over the Amounts (A) based on our criteria (Departments (X) & Date (Y) (obviously Z would represent another attribute)
+  -- So, how do we pull it into a formula?
+    -- First, think of the SUM & LOOKUP syntaxes as the same but they CANNOT be used together
+    -- Translation => (syntax) A[SUM: X, SUM: Y, SUM...]
+  -- This syntax goes in the destination line item
+  -- Example of real formula: 'DATA:Sales Data'.Amount[SUM: 'DATA:Sales Data'.Date, SUM: DATA:Sales Data'.Department]
+    -- In this, we can say we want the Amount based on Date and Department, which will land in the current module I am working in
+
+> LOOKUP is exact same except that you replace SUM with LOOKUP 
 
