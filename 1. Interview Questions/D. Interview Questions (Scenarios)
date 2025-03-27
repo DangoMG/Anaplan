@@ -1,1 +1,113 @@
-Coming soon...
+/// Anaplan Scenario Questions by Category & Level of Difficulty ///
+
+Below Scenarios are Formatted as:
+Q = Question
+C = Criteria (What Interviewer is Looking For)
+A = Answer
+
+---
+
+📘 Anaplan Scenario-Based Interview Questions (L1–L3) 📘
+
+Each scenario is designed to assess **real-world problem-solving**, **design thinking**, and **hands-on experience** with the Anaplan platform. Questions are grouped by difficulty and topic. Use these for interviews, prep, or portfolio walkthroughs
+
+---
+
+🟢 Beginner (L1) Scenarios 🟢
+
+----------------------
+--- Model Building ---
+----------------------
+
+Q: You’re asked to build a headcount input module. Each employee should be linked to a department and cost center. How would you structure the lists and modules?  
+C: (Testing list hierarchy setup and basic module structuring)  
+A: Use an **Employee (numbered list)** linked to **Department** and **Cost Center** via a SYS mapping module. The input module should be dimensioned by Employee and Time, with relevant line items like Start Date, Role, and Salary
+
+Q:A user wants to enter salary inputs for next year only. How would you prevent them from editing past or current months?  
+C: (Understanding DCA basics and user control)  
+A: Create a **boolean filter module** based on Time (e.g., ITEM(Time) > Current Month). Use that boolean as a **Write Access Driver (DCA)** on the input line item
+
+----------------
+--- Security ---
+----------------
+
+Q: A regional manager should only see data for their region. How would you set this up in Anaplan?  
+C: (Testing understanding of Selective Access setup)  
+A: Enable **Selective Access** on the Region list and assign region access in the **Users** tab. Optionally, use a SYS module for lookup and validation
+
+---
+
+🟡 **Intermediate (L2) Scenarios 🟡
+
+-------------------
+--- Integration ---
+-------------------
+
+Q: You're importing daily sales data from an external ERP into Anaplan. Sometimes the file has missing products. What’s your strategy to avoid errors?  
+C: (Testing integration setup and import error handling)  
+A: Create a **product staging list (numbered)** for loading raw data. Validate mappings in a SYS module before loading into planning modules. Use **saved views** with filters to ignore unmapped records
+
+------------------------------
+--- Forecasting & Planning ---
+------------------------------
+
+Q: The finance team wants a forecast module that rolls forward automatically each month. How would you approach this?  
+C: (Testing understanding of time filters and rolling logic)  
+A: Create a **time filter module** using `ITEM(Time) >= Current Month` logic. Apply this to forecast input modules using filters or DCA
+
+Q: Actuals are posted monthly. You need a dashboard that shows actuals through the current month and forecast beyond. How do you do this cleanly?  
+C: (Demonstrating time split logic and dashboard usability)  
+A: Create two separate line items: one for Actuals, one for Forecast. Use a boolean (`ITEM(Time) < Current Month`) to control when each is shown. Use a **Final Output line** that combines them with IF statements
+
+-------------------
+--- Performance ---
+-------------------
+
+Q: A model is running slow due to a module dimensioned by Region x Product x Time. What’s your optimization strategy?  
+C: (Checking awareness of sparsity and dimensionality impacts)  
+A: Split the module by region or product if applicable. Move filters/calculations into SYS modules. Apply summary method **None** where possible and check for TEXT-heavy calculations
+
+---
+
+🔴 Advanced (L3) Scenarios 🔴
+
+-------------------------------
+--- Architecture & Planning ---
+-------------------------------
+
+Q: You're designing a multi-model architecture for Finance, HR, and Sales. How do you ensure consistency and avoid data duplication?  
+C: (Evaluating enterprise architecture and governance thinking)  
+A: Implement a **central Data Hub** for shared lists and metadata. Use standardized naming conventions, build mapping SYS modules, and apply ALM best practices across models. Use CloudWorks or APIs for sync
+
+----------------------
+--- Security & DCA ---
+----------------------
+
+Q: A user can be both a Planner and Reviewer depending on the project. How do you build flexible DCA logic for their dual role?  
+C: (Testing multi-role access setup)  
+A: Create a **role mapping module** and two DCA drivers (one per role). Use `OR` logic in a combined boolean to allow write access if either role is active
+
+--------------------------------
+--- Integration & Automation ---
+--------------------------------
+
+Q: You need to connect Workday → Snowflake → Anaplan. Data must arrive daily before 7 AM. What’s your data orchestration plan?  
+C: (Evaluating end-to-end pipeline control and scheduling awareness)  
+A: Schedule exports from Workday to Snowflake with transformation rules. Trigger CloudWorks to run at 6:30 AM, pulling cleaned data into the Data Hub. Build a health check dashboard to monitor import success/failure
+
+-----------------------------------
+--- Troubleshooting & Debugging ---
+-----------------------------------
+
+Q: You inherit a model with over 1B cells and slow dashboards. Where do you start your performance audit?  
+C: (Evaluating real-world debugging approach)  
+A: Start by reviewing **Cell Count Report**, checking heavy modules and TEXT usage. Audit summary methods, sparsity, list sizes, and dashboard load times. Use Model Map and Formula Usage to identify unnecessary logic
+
+------------------------
+--- Governance & ALM ---
+------------------------
+
+Q: Your Dev model has breaking changes and can't sync to Prod. Business still needs minor list updates. What do you do?  
+C: (Assessing understanding of ALM, production data, and risk mitigation)  
+A: Mark lists as **Production Data** so updates can be made directly in Prod. Freeze Dev changes and create a clean Dev copy for safe future development
+
