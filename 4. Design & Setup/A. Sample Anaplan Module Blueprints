@@ -13,6 +13,7 @@ Module: SYS: User Time Filter
 Purpose: Allows users to select time for target cards (aka modules via UX/UI pages)
 Dimensions: Users x Time x Line Items
 Bluerpint:
+  | Line Item | Format | Formula | Summary | Applies To | Time |
   Day | Boolean | - | None | Year
   Week | Boolean | - | None | Year
   Month | Boolean | - | None | Year
@@ -24,6 +25,25 @@ Bluerpint:
   Month Stage | Boolean | YEARVALUE(Month) | None | - | Month
   Quarter Stage | Boolean | YEARVALUE(Quarter) | None | - | Quarter
   Year Stage | Boolean | Year | None | - | Year
-  Final Filter | Day Stage OR Week Stage OR Month Stage OR Quarter Stage OR Year Stage
+  Final Filter | Day Stage OR Week Stage OR Month Stage OR Quarter Stage OR Year Stage | Formula | Year
 Format Criteria: Time Scale = Year
 Application: Apply Final Filter via Page Builder in Dashboard > Filter > Applies to Time (column) 
+
+---
+
+Module: SYS: Version Properties 
+Purpose: 
+Dimensions: Custom Versions List x Line Items
+Bluerpint:
+  | Line Item | Format | Formula | Summary | Applies To | Time |
+  Forecast Start Period	| Month | - | None | - | None
+  Latest Month of Actuals	| Month	| Forecast Period Start - 1	| None | - |None
+  Delete |	Boolean	| - | None | None
+  Never Delete | Boolean | ITEM(Custom Versions) <> 'SYS: Admin Lookups'.Active Forecast | None | - | None
+  Delete CF	| Number | IF Delete THEN 1 ELSE 0 | Sum | - | None
+  Lock Version? | Boolean | - | None | - | None
+  Write DCA	| Boolean | NOT Lock Version? | None | - | None
+  Read DCA | Boolean | TRUE | None | - | None
+  CF_Write | Number | IF Lock Version? THEN 0 ELSE 1 | Sum | - | None
+Format Criteria: N/A
+Application: N/A
