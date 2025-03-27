@@ -1,1 +1,51 @@
-Coming soon...
+## Anaplan Solution Architect / Master Anaplanner Interview Questions (Theory Only)**
+
+----------------------------------------------
+--- Model Architecture & Design Principles ---
+----------------------------------------------
+Q: What is the DISCO methodology and how do you apply it in large-scale model design?
+C: 
+A: 
+
+Q: How do you design for scalability in multi-model architecture with multiple business functions (e.g., FP&A, Workforce, Sales)?
+C:
+A: 
+
+Q: Explain the difference between spoke-to-spoke vs. spoke-to-hub integration models
+C: 
+A: 
+
+Q: What are some trade-offs when using native versions vs. custom versioning in enterprise models?
+C: 
+A: 
+
+Q: How do you decide between creating a new model vs. expanding an existing model in a production workspace?
+C: 
+A: 
+
+------------------------------------------------
+--- Performance Optimization & Data Modeling ---
+------------------------------------------------
+6. **How does sparsity impact model performance and how do you mitigate it?**  
+7. **What role does time range optimization play in large models?**  
+8. **Why is TEXT a performance concern, and how do you reduce reliance on it in planning models?**  
+9. **How do summary methods impact calculation time and memory usage?**  
+10. **What are the benefits of separating calculation modules from reporting modules in complex solutions?**
+
+----------------------------------
+--- Governance, Security & ALM ---
+----------------------------------
+11. **What are revision tags and how do they support the ALM process?**  
+12. **How do you manage model syncs across multiple environments when models are dependent on one another?**  
+13. **What is the difference between Production Data and Structural Data in ALM?**  
+14. **How do you implement Dynamic Cell Access (DCA) in a model that has multiple user roles with overlapping access needs?**  
+15. **What’s your strategy for handling user access across multiple models and workspaces?**
+
+---------------------------------------------
+--- Integration & Enterprise Architecture ---
+---------------------------------------------
+16. **What are the advantages of using CloudWorks over external ETL tools for data integration?**  
+17. **Explain how OAuth2.0 works in the context of secure API integrations with Anaplan.**  
+18. **What are the key considerations when integrating Anaplan with a Customer Data Platform (CDP) like Snowflake or Redshift?**  
+19. **How does BYOK enhance data security in highly regulated industries?**  
+20. **When building a solution architecture, how do you collaborate with IT and business stakeholders to ensure alignment?**
