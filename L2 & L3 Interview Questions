@@ -8,6 +8,26 @@ C: (Evaluating Anaplan BDP practices, organization, and understanding of naming 
 A: DISCO stands for Data, Input, System, Calculation, Output—a modeling structure that organizes modules by function; improves model clarity, 
 scalability, and performance by separating concerns, making maintenance and debugging easier
 
+Q: What is PLANS & how is it used in Anaplan?
+C: 
+A: 
+
+Q: What is CloudWorks & how does it work? What are the 3 external CSPs that are native to it?
+C:
+A: 
+
+Q: How does BYOK work?
+C: 
+A: 
+
+Q: Explain what type of certificate CA integration option uses & why
+C: 
+A: 
+
+Q: What is OAuth2.0 and how is it setup?
+C:
+A:
+
 Q: How would you handle sparsity in a large model?
 C: (Aiming to understand developement practices around futureproofing and building for scale)
 A: To reduce sparsity, avoid over-dimensioning modules and use boolean filters, line item subsets, and conditional calculations; split 
