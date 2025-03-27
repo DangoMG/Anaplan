@@ -1,45 +1,73 @@
+Below are typical questions for L2/L3:
+Q = Question
+C = (Assessment) Criteria
+A = Answer (Framing)
+
 Q: What is DISCO in Anaplan and why is it important?
 C: (Evaluating Anaplan BDP practices, organization, and understanding of naming conventions)
 A: DISCO stands for Data, Input, System, Calculation, Output—a modeling structure that organizes modules by function; improves model clarity, 
 scalability, and performance by separating concerns, making maintenance and debugging easier
 
-Q: 
-C:
-A: 
+Q: How would you handle sparsity in a large model?
+C: (Aiming to understand developement practices around futureproofing and building for scale)
+A: To reduce sparsity, avoid over-dimensioning modules and use boolean filters, line item subsets, and conditional calculations; split 
+high-granularity data into separate modules and aggregate only when needed
 
-Q: 
-C:
-A: 
+Q: Explain the concept of versionization
+C: (Assessing ability to design multi-scenario planning, and use of time + version logic across modules)
+A: Versionization is the process of creating separate versions (e.g., Actual, Budget, Forecast) of the same data set for scenario analysis; allows comparing multiple 
+planning outcomes and typically uses either native versions or a custom version list to apply logic across the model
 
-Q: 
-C:
-A: 
+Q: What are the pros and cons of Native vs Custom Version Lists?
+C: (Testing architecture decision-making, ALM knowledge, and model flexibility awareness)
+A: Native Versions support built-in features like switchover, version formulas, and comparison reports, and work well with ALM. However, they're limited in 
+customization and can’t be selectively applied across modules; custom Versions (using a list) offer full flexibility and selective use in modules, but lack native features 
+and require more manual setup
 
-Q: 
-C:
-A: 
+Q: Why can't you use LOOKUP & SUM together?
+C: (Evaluating understanding of function mechanics, dimensional context, and modeling accuracy)
+A: You can't use LOOKUP and SUM together because they both operate on different directions—LOOKUP pulls data based on a mapping, while SUM aggregates based on a 
+target mapping; using both would create ambiguity about whether to pull or aggregate the data, which leads to a dimensionality mismatch and a formula error
 
-Q: 
-C:
-A: 
+Q: Explain what Production Data does when checked for the list
+C: (Checking knowledge of ALM configuration, data/model separation, and revision safety)
+A: When Production Data is checked on a list, it means that list items can be added or modified directly in Production without impacting the structural model; ensures that list
+changes don’t require a sync from Dev and protects the integrity of the deployed model during ALM processes
 
+Q: How do you use the LOOKUP function, and when would you use SUM instead?
+C: (Aiming to vet out junior vs senior model builders and their technical comprehension of Anaplan)
+A: Use LOOKUP when pulling data based on a single mapping (like employee to department); use SUM when aggregating values across dimensions, such as summing expenses by cost center
 
-Q: 
-C:
-A: 
+Q: How do time ranges improve performance and model design?
+C: (Focused on understanding sparsity management and model optimization)
+A: Time ranges allow you to apply custom date spans to modules instead of the full model calendar; improves performance by reducing unnecessary calculations and memory usage
 
-Q: 
-C:
-A: 
+Q: What are dynamic cell access (DCA) and how do you use it?
+C: (Looking to understand how builders manage access control in Anaplan)
+A: DCA is used to control read/write access at the cell level using boolean drivers; apply it by referencing boolean line items in the Read Access Driver or Write Access 
+Driver settings of a line item
 
-Q: 
-C:
-A: 
+Q: How do you implement Version Switchover logic?
+C: (Analyzing interviewees understanding of the inner-workings of Anaplan configurations)
+A: In Native Versions, use Switchover to pull actuals into forecast versions automatically based on a set date;ensures continuity of data and simplifies 
+rolling forecasts by eliminating manual copying of actuals
 
-Q: 
-C:
-A: 
+Q: What is the impact of using TEXT formatted line items in large models?
+C: (Testing understanding of data type optimization, model memory consumption, and performance trade-offs)
+A: TEXT line items are more memory-intensive and can slow down model performance, especially when heavily used in calculations; use them sparingly and avoid in 
+modules that aggregate over large dimensions
 
-Q: 
-C:
-A: 
+Q: How would you build a rolling forecast model in Anaplan?
+C: (Checking for skills in dynamic filtering, time-based logic building, and forecasting automation)
+A: Use a time filter module with logic to dynamically show current and future months (e.g., ITEM(Time) >= Current Month); combine with dynamic versions or custom time 
+ranges to maintain rolling logic without needing to rebuild each period
+
+Q: How do you debug a complex formula that isn’t working?
+C: (Evaluating problem-solving approach, modular thinking, and familiarity with Anaplan's debugging tools)
+A: Break the formula into smaller parts using temporary helper line items to isolate issues; use drill-down and show formula features, and check that 
+data types and dimensionality match across components
+
+Q: What are revision tags and how are they used in ALM?
+C: (Gauging understanding of model governance, change management process, and ALM best practices)
+A: Revision tags are version snapshots of a development model used in Application Lifecycle Management (ALM); allow you to promote only tested and approved 
+changes to the production model through model synchronization
