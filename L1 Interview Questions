@@ -1,0 +1,71 @@
+Below are typical questions for L1/L2:
+Q = Question
+C = (Assessment) Criteria
+A = Answer (Framing)
+
+Q: What is Anaplan and how does it differ from traditional Excel-based planning?
+C: (Tests general understanding and comparison skills)
+A: Anaplan is a cloud-based (SaaS), enterprise-grade planning platform that enables dynamic, collaborative, and real-time planning across finance, sales, supply chain, 
+workforce, and other business functions that sits on AWS/GCP servers; built on a patented in-memory calculation engine called Hyperblock, which 
+allows for fast calculations and data updates across large, complex datasets
+
+Q: What are modules, lists, and line items in Anaplan?
+C: (Fundamental building blocks of Anaplan)
+A: Lists = the dimensions | Modules = the workspace where planning happens | Line Items = the data/calculations inside module
+
+Q: What is the difference between a model and a workspace?
+C: (Understanding the platform structure)
+A: Workspace = container that holds one or more models and is tied to a specific amount of memory and user access | Model = individual 
+planning environment within a workspace that contains modules, lists, dashboards, and data used for a specific business process or use case
+
+Q: What is a numbered list and when would you use it?
+C: (Useful for use cases like employee or transaction-level detail)
+A: Numbered list is a type of list in Anaplan where items are identified by system-generated numbers instead of names | It’s used when list items may 
+have duplicate names (e.g., multiple employees with the same name) or when you need to store transactional or detailed records like logs, comments, 
+or line items with similar label
+
+Q: Explain the purpose and use of a system module (SYS module)?
+C: (Testing knowledge of model architecture best practices)
+A: System modules are used to store metadata, mappings, and filters related to lists or dimensions; used create intersection (relationships) and to
+keep calculations clean by separating logic from data and improves model performance and maintainability by centralizing commonly used references
+
+Q: What is a line item subset and when is it used?
+C: (Shows ability to build dynamic reporting or calculations)
+A: Line-Item Subset (LiSS) is a custom list created from selected line items across a module, which is used when you need to apply calculations, filters, or mappings to a group of 
+line items as if they were list items—commonly in reporting, driver-based calculations, or KPI aggregations
+
+Q: What are summary methods in Anaplan? How do they affect calculations?
+C: (Helps evaluate performance and accuracy understanding)
+A: Summary methods define how data is aggregated across dimensions like time, hierarchy, or versions (Ex. include SUM, AVERAGE, MIN, MAX, and NONE); They affect calcs by determining how 
+parent levels or totals are calculated, impacting both accuracy and performance of the model
+
+Q: What is the difference between a formula and a function in Anaplan?
+C: (Testing how well you understand syntax vs. business logic)
+A: 
+
+Q: How does time dimension work in Anaplan? Can you customize it?
+C: (Checks knowledge of time-based modeling)
+A:
+
+Q: What is ALM (Application Lifecycle Management) in Anaplan? Have you used it before?
+C: (Even at L1, basic awareness of Dev vs. Prod models is useful)
+A:
+
+Q: Explain the use of Selective Access in Anaplan. How do you implement it?
+C: (Tests understanding of user security and access controls)
+A:
+
+Q: What is a Data Hub, and why is it important in model design?
+C: (Shows awareness of scalable architecture)
+A: 
+
+Q: Have you worked with import/export actions in Anaplan? How do you handle failed imports?
+C: (Practical experience with data integration)
+A: 
+
+Q: What is a saved view and how is it different from a module view?
+C: (Important for creating imports/exports and dashboards)
+A: 
+
+What are some best practices for improving model performance?
+(Shows awareness of scalability and efficiency)
