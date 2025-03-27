@@ -1,13 +1,29 @@
 /// Key Module Templates ///
 
-The format for the modules will be:
+The format for Blueprint mode in the modules will be:
+______________________________________________________________
+| Line Item | Format | Formula | Summary | Applies To | Time |
+______________________________________________________________
 
-_____________________
-| Line Item | Format | 
-|
-
+-----------------
+--- Templates ---
+-----------------
 
 Module: SYS: User Time Filter
-Purpose: 
-Dimensions: 
-Application:
+Purpose: Allows users to select time for target cards (aka modules via UX/UI pages)
+Dimensions: Users x Time x Line Items
+Bluerpint:
+  Day | Boolean | - | None | Year
+  Week | Boolean | - | None | Year
+  Month | Boolean | - | None | Year
+  Quarter | Boolean | - | None | Year
+  Year | Boolean | - | None | Year
+  Staging | No Data 
+  Day Stage | Boolean | YEARVALUE(Day) | None | - | Day
+  Week Stage | Boolean | YEARVALUE(Week) | None | - | Week
+  Month Stage | Boolean | YEARVALUE(Month) | None | - | Month
+  Quarter Stage | Boolean | YEARVALUE(Quarter) | None | - | Quarter
+  Year Stage | Boolean | Year | None | - | Year
+  Final Filter | Day Stage OR Week Stage OR Month Stage OR Quarter Stage OR Year Stage
+Format Criteria: Time Scale = Year
+Application: Apply Final Filter via Page Builder in Dashboard > Filter > Applies to Time (column) 
