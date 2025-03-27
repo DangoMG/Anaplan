@@ -9,24 +9,29 @@ A: DISCO stands for Data, Input, System, Calculation, Output—a modeling struct
 scalability, and performance by separating concerns, making maintenance and debugging easier
 
 Q: What is PLANS & how is it used in Anaplan?
-C: 
-A: 
+C: (Evaluating knowledge of design principles, model governance, and ability to build scalable models)
+A: PLANS stands for Performance, Logic, Auditable, Necessary, Sustainable—Anaplan’s core design principles; used to guide model builders toward efficient, maintainable, 
+and scalable solutions by encouraging thoughtful structuring of logic, data flow, and naming conventions
 
 Q: What is CloudWorks & how does it work? What are the 3 external CSPs that are native to it?
-C:
-A: 
+C: (Testing knowledge of integration automation, data scheduling, and cloud connectivity)
+A: CloudWorks is Anaplan’s native integration tool that lets users automate imports/exports and orchestrate actions across models using cloud-based connectors; enables scheduled or on-demand 
+data flows without needing third-party tools; the 3 native Cloud Service Providers (CSPs) supported are AWS S3, Azure Blob Storage, and Google Cloud Storage
 
 Q: How does BYOK work?
-C: 
-A: 
+C: (Assessing understanding of data encryption standards, enterprise security, and data ownership)
+A: BYOK (Bring Your Own Key) allows organizations to use their own encryption keys, managed via Azure Key Vault, to secure data in Anaplan; gives businesses full control over 
+encryption, key rotation, and revocation—ensuring compliance with strict data governance policies
 
 Q: Explain what type of certificate CA integration option uses & why
-C: 
-A: 
+C: (Checking knowledge of secure integration methods, certificate authentication, and API security)
+A: CA (Certificate Authority) integration uses X.509 public key certificates issued by a trusted certificate authority; certificates are used in public-private key pair 
+authentication when setting up integrations with Anaplan's APIs, ensuring secure, passwordless, and tamper-proof communication; technical answer = S/MIME
 
 Q: What is OAuth2.0 and how is it setup?
-C:
-A:
+C: (Testing knowledge of modern authentication protocols, integration security, and client credential flow)
+A: OAuth2.0 is an industry-standard protocol for secure delegated authorization, used in Anaplan to authenticate integrations without storing usernames and passwords; setup involves registering 
+the client in the Anaplan Admin Console, generating a Client ID and Secret, and exchanging those credentials for an access token to authenticate API requests
 
 Q: How would you handle sparsity in a large model?
 C: (Aiming to understand developement practices around futureproofing and building for scale)
