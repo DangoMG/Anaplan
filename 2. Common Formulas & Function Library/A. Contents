@@ -1,3 +1,53 @@
 Coming soon...
 
 Anapedia: https://help.anaplan.com/all-functions-160769b0-de37-4f08-87a0-cc3aa55525a3 
+
+------------------------
+--- Table of Content ---
+------------------------
+
+This folder contains frequently used Anaplan formulas and logic examples, organized by function type and use case 
+Use this as a quick reference for development, training, or troubleshooting
+
+B. LOOKUP, SUM, SELECT
+  - Explains Directional Differences
+  - Real-World Use Cases
+  - Syntax examples & pitfalls
+
+C. TEXT Functions
+  - LEFT, RIGHT, FIND, LEN, TEXT, VALUE
+  - Use Cases & Performance Considerations
+
+D. Time Functions
+  - ITEM(Time), CURRENTPERIODSTART, MOVINGSUM
+  - Rolling Logic & Time Filtering Formulas
+
+E. Conditional Logic
+  - IF THEN ELSE, Nested IFs, Combining with Booleans
+  - Use of AND, OR, NOT, & Clean Logic Writing
+
+F. FINDITEM, ITEM, ISBLANK, ISFIRSTOCCURENCE (ISFO)
+  - Common List-Matching Patterns & Null Checking
+  - FINDITEM(list, text) & ISBLANK()
+
+G. RANK, CUMULATE
+  - Examples for Ranking by Region/Product
+  - Cumulative SUMs with Conditional Logic
+
+H. Data Transformation
+  - Calculating Month Names, Week Start, Quarter Start
+  - Using PERIOD, START, END, & Date Comparisons
+
+I. Line-Item Subset (LiSS)
+  - Read/Write Driver Examples
+  - Role-Based DCA Conditions with Booleans
+
+J. MOVINGSUM, INPERIOD, PREVIOUS
+  - Using LIS in Reporting, KPI Modules, & Aggregations
+
+Z. Performance Tips
+  - Formula Refactoring Examples
+  - TEXT to LIST Optimizations, Summary Methods
+  
+
+
