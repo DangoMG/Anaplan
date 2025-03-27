@@ -23,6 +23,26 @@ C: (Understanding the platform structure)
 A: Workspace = container that holds one or more models and is tied to a specific amount of memory and user access | Model = individual 
 planning environment within a workspace that contains modules, lists, dashboards, and data used for a specific business process or use case
 
+Q: Can you explain how data flows to, through, and beyond Anaplan?
+C: Evaluating end-to-end data architecture understanding, data governance awareness, and cross-system thinking)
+A: Data flows to Anaplan from external systems (ERP, CRM, etc.) via ETL tools, APIs, or CloudWorks; once in Anaplan, it moves through Data Hub(s) for cleansing and staging, then 
+into spoke models for calculations and planning; from there, it flows beyond Anaplan to downstream systems like BI tools (e.g., Power BI, Tableau) for reporting or back to data lakes/CDPs for consolidation
+
+Q: What is an ETL pipeline and how is it setup?
+C: (Assessing knowledge of data integration process, tool selection, and data transformation logic)
+A: An ETL pipeline stands for Extract, Transform, Load—a data process that pulls from source systems, transforms the data (e.g., mapping, cleaning), and loads it into Anaplan; typically set up 
+using tools like Informatica, Boomi, MuleSoft, or CloudWorks, with scheduled jobs or APIs controlling frequency and flow logic
+
+Q: How is data orchestration setup as it pertains to Workday to CDP to Anaplan?
+C: (Evaluating data architecture fluency, integration sequencing, and enterprise data flow awareness)
+A: Workday sends data to a Customer Data Platform (CDP) like Snowflake or Redshift for central staging, enrichment, and governance; from the CDP, data is pushed to Anaplan's Data Hub using tools like 
+CloudWorks or APIs; orchestration is typically controlled via a data scheduler or pipeline manager ensuring jobs run in sequence and data dependencies are honored
+
+Q: When do we want to use a numbered list vs non-numbered list?
+C: (Testing knowledge of list structure use cases, data uniqueness handling, and UI behavior)
+A: Use a numbered list when items may have duplicate display names (e.g., multiple employees named "John Smith") or when capturing transactional data with unique IDs; use a non-numbered list 
+when items have unique names and don’t require display name overrides, as they’re easier to read and manage in formulas and dashboards
+
 Q: What is a numbered list and when would you use it?
 C: (Useful for use cases like employee or transaction-level detail)
 A: Numbered list is a type of list in Anaplan where items are identified by system-generated numbers instead of names | It’s used when list items may 
