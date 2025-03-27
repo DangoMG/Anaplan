@@ -1,1 +1,40 @@
-Coming soon...
+# Wireframes 4-1-1
+
+This folder contains sample dashboard and page wireframes used to communicate layout ideas, user flow, and stakeholder reporting requirements before Anaplan development begins.
+
+Each wireframe follows the 4-1-1 structure:
+- **4 Core Pages**
+- **1 Executive Summary Page**
+- **1 Admin/Control Page**
+
+---
+
+## Included Wireframes:
+
+### 1. Headcount Planning Wireframe
+- Includes department dropdown, time selector, and editable grid for new hires.
+- Summary cards show total OTE, salary, and FTE counts.
+
+### 2. Workforce Dashboard (New UX)
+- Clean layout for HR partners to review actual vs forecast headcount by cost center.
+- Highlights attrition trends and onboarding gaps.
+
+### 3. FP&A Summary Dashboard
+- Executive-level read-only dashboard with waterfall charts, variances, and key financial metrics.
+- Pulls from multiple modules to summarize revenue, opex, and EBITDA.
+
+### 4. Sales Forecasting UX Wireframe
+- Displays sales pipeline inputs, conversion assumptions, and month-over-month projections.
+- Used by regional sales managers to update forecasts by product family.
+
+---
+
+## Wireframing Tools Used:
+- Miro  
+- Figma  
+- PowerPoint  
+
+---
+
+## Purpose:
+These wireframes help align business users and Anaplan model builders on page structure, UX elements, and interactivity before buildout begins.
