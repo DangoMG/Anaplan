@@ -1,7 +1,13 @@
+/// Anaplan L1/L2 Interview Questions (Theory) ///
+
 Below are typical questions for L1/L2:
 Q = Question
 C = (Assessment) Criteria
 A = Answer (Framing)
+
+-----------------------------------------
+--- Platform & Conceptual Foundations ---
+-----------------------------------------
 
 Q: What is Anaplan and how does it differ from traditional Excel-based planning?
 C: (Tests general understanding and comparison skills)
@@ -14,34 +20,14 @@ C: (Looking for both functional/technical conceptualization of the relationship/
 A: In Anaplan, a hub is considered the upstream-most, centralized model (generally the Data Hub) that receives initial inbound data that is then distributed to the appropriate
 downstream model(s) (ex. Comp Expense Planning, Topline, OpEx, etc.); purpose is to delineate functional data from raw data + helps manage sparsity
 
-Q: What are modules, lists, and line items in Anaplan?
-C: (Fundamental building blocks of Anaplan)
-A: Lists = the dimensions | Modules = the workspace where planning happens | Line Items = the data/calculations inside module
-
 Q: What is the difference between a model and a workspace?
 C: (Understanding the platform structure)
 A: Workspace = container that holds one or more models and is tied to a specific amount of memory and user access | Model = individual 
 planning environment within a workspace that contains modules, lists, dashboards, and data used for a specific business process or use case
 
-Q: Can you explain how data flows to, through, and beyond Anaplan?
-C: Evaluating end-to-end data architecture understanding, data governance awareness, and cross-system thinking)
-A: Data flows to Anaplan from external systems (ERP, CRM, etc.) via ETL tools, APIs, or CloudWorks; once in Anaplan, it moves through Data Hub(s) for cleansing and staging, then 
-into spoke models for calculations and planning; from there, it flows beyond Anaplan to downstream systems like BI tools (e.g., Power BI, Tableau) for reporting or back to data lakes/CDPs for consolidation
-
-Q: What is an ETL pipeline and how is it setup?
-C: (Assessing knowledge of data integration process, tool selection, and data transformation logic)
-A: An ETL pipeline stands for Extract, Transform, Load—a data process that pulls from source systems, transforms the data (e.g., mapping, cleaning), and loads it into Anaplan; typically set up 
-using tools like Informatica, Boomi, MuleSoft, or CloudWorks, with scheduled jobs or APIs controlling frequency and flow logic
-
-Q: How is data orchestration setup as it pertains to Workday to CDP to Anaplan?
-C: (Evaluating data architecture fluency, integration sequencing, and enterprise data flow awareness)
-A: Workday sends data to a Customer Data Platform (CDP) like Snowflake or Redshift for central staging, enrichment, and governance; from the CDP, data is pushed to Anaplan's Data Hub using tools like 
-CloudWorks or APIs; orchestration is typically controlled via a data scheduler or pipeline manager ensuring jobs run in sequence and data dependencies are honored
-
-Q: When do we want to use a numbered list vs non-numbered list?
-C: (Testing knowledge of list structure use cases, data uniqueness handling, and UI behavior)
-A: Use a numbered list when items may have duplicate display names (e.g., multiple employees named "John Smith") or when capturing transactional data with unique IDs; use a non-numbered list 
-when items have unique names and don’t require display name overrides, as they’re easier to read and manage in formulas and dashboards
+----------------------------------
+--- Core Model Building Blocks ---
+----------------------------------
 
 Q: What is a numbered list and when would you use it?
 C: (Useful for use cases like employee or transaction-level detail)
@@ -49,58 +35,85 @@ A: Numbered list is a type of list in Anaplan where items are identified by syst
 have duplicate names (e.g., multiple employees with the same name) or when you need to store transactional or detailed records like logs, comments, 
 or line items with similar label
 
-Q: Explain the purpose and use of a system module (SYS module)?
-C: (Testing knowledge of model architecture best practices)
-A: System modules are used to store metadata, mappings, and filters related to lists or dimensions; used create intersection (relationships) and to
-keep calculations clean by separating logic from data and improves model performance and maintainability by centralizing commonly used references
+Q: When do we want to use a numbered list vs non-numbered list?
+C: (Testing knowledge of list structure use cases, data uniqueness handling, and UI behavior)
+A: Use a numbered list when items may have duplicate display names (e.g., multiple employees named "John Smith") or when capturing transactional data with unique IDs; use a non-numbered list 
+when items have unique names and don’t require display name overrides, as they’re easier to read and manage in formulas and dashboards
 
 Q: What is a line item subset and when is it used?
 C: (Shows ability to build dynamic reporting or calculations)
 A: Line-Item Subset (LiSS) is a custom list created from selected line items across a module, which is used when you need to apply calculations, filters, or mappings to a group of 
 line items as if they were list items—commonly in reporting, driver-based calculations, or KPI aggregations
 
+Q: Explain the purpose and use of a system module (SYS module)?
+C: (Testing knowledge of model architecture best practices)
+A: System modules are used to store metadata, mappings, and filters related to lists or dimensions; used create intersection (relationships) and to
+keep calculations clean by separating logic from data and improves model performance and maintainability by centralizing commonly used references
+
+Q: What are modules, lists, and line items in Anaplan?
+C: (Fundamental building blocks of Anaplan)
+A: Lists = the dimensions | Modules = the workspace where planning happens | Line Items = the data/calculations inside module
+
+--------------------------------------
+--- Time, Version, & Summary Logic ---
+--------------------------------------
+
+Q: How does the time dimension work in Anaplan? Can you customize it?
+C: (Time-based modeling awareness)
+A: The time dimension is built-in and supports months, quarters, and years. You can customize it with time ranges, fiscal year starts, and time scales
+
 Q: What are summary methods in Anaplan? How do they affect calculations?
-C: (Helps evaluate performance and accuracy understanding)
-A: Summary methods define how data is aggregated across dimensions like time, hierarchy, or versions (Ex. include SUM, AVERAGE, MIN, MAX, and NONE); They affect calcs by determining how 
-parent levels or totals are calculated, impacting both accuracy and performance of the model
+C: (Evaluates understanding of calculation performance)
+A: Summary methods control how data is aggregated (e.g., SUM, AVERAGE, NONE). They impact performance and how parent data is calculated
 
 Q: What is the difference between a formula and a function in Anaplan?
-C: (Testing how well you understand syntax vs. business logic)
-A: A formula is the full expression written in a line item to perform a calculation or logic vs A function is a specific built-in keyword (like SUM, LOOKUP, or IF) 
-used within a formula to perform a defined operation | In short, functions are building blocks, and formulas are the full statements that use them
-
-Q: How does time dimension work in Anaplan? Can you customize it?
-C: (Checks knowledge of time-based modeling)
-A: Time dimension in Anaplan is a built-in dimension that allows planning over periods like months, quarters, and years; can customize it by setting the time scale (e.g., monthly, weekly), 
-time range, fiscal year start, and by creating custom time ranges for more flexible planning needs
+C: (Syntax vs logic understanding)
+A: A formula is the full expression written in a line item. A function (like SUM, LOOKUP) is a specific operation used inside a formula
 
 Q: What is ALM (Application Lifecycle Management) in Anaplan? Have you used it before?
-C: (Even at L1, basic awareness of Dev vs. Prod models is useful)
-A: ALM allows you to manage changes between development (DEV), test (TEST), and production (PROD) models using a structured deployment process; helps ensure model updates are tested before 
-going live, reducing the risk of errors (ex. yes, I’ve used ALM to move changes safely from a Dev model to Prod using revision tags and model synchronization)
+C: (Basic Dev vs. Prod model awareness)
+A: ALM enables safe model updates between Dev and Prod through revision tags and model syncs. Yes, I’ve used ALM to move structural changes into production safely
+
+---------------------------------------
+--- Security, Access, & Integration ---
+---------------------------------------
 
 Q: Explain the use of Selective Access in Anaplan. How do you implement it?
-C: (Tests understanding of user security and access controls)
-A: Selective Access restricts user access to specific list items (like certain regions or departments) so they only see or edit relevant data; its implemented by enabling selective access 
-on a list and assigning read/write access to users through the Users settings or import actions (ideally used with a staging module + action with semi-automation via CloudWorks
+C: (User access control awareness)
+A: Selective Access limits access to list items by user. It’s enabled at the list level and assigned via the Users page or import actions, often staged through a SYS module
 
 Q: What is a Data Hub, and why is it important in model design?
-C: (Shows awareness of scalable architecture)
-A: Data Hub is a centralized model used to store and manage raw data before distributing it to spoke models; improves data integrity, reduces duplication, and simplifies integration 
-by acting as the single source of truth for all connected models
+C: (Shows scalable model architecture awareness)
+A: A Data Hub acts as a central source for raw/staged data. It improves data integrity and reduces duplication across spoke models
 
 Q: Have you worked with import/export actions in Anaplan? How do you handle failed imports?
 C: (Practical experience with data integration)
-A: Yes, I’ve worked with import/export actions to load data into modules, lists, and users, and to export reports or data extracts; if an import fails, I check the error logs, 
-validate the source file format, ensure list mappings are correct, and verify that all required fields are included
+A: Yes—I've used import/export actions for data and metadata. For failed imports, I review error logs, validate mappings, and fix file formats
 
 Q: What is a saved view and how is it different from a module view?
-C: (Important for creating imports/exports and dashboards)
-A: A saved view is a customized layout of a module with specific filters, sorting, or selected dimensions, saved for reuse; unlike the default module view, saved views are 
-often used in import/export actions and dashboards to display or move specific data in a controlled format
+C: (Reporting and integration familiarity)
+A: A saved view is a custom layout of a module with filters and selections. It’s used for dashboards and integrations, unlike default module views
+
+-------------------------------
+--- Integration & Data Flow ---
+-------------------------------
+
+Q: Can you explain how data flows to, through, and beyond Anaplan?
+C: (Understanding of end-to-end architecture and data flow)
+A: Data enters Anaplan from ERP/CRM systems through ETL or CloudWorks, is staged in a Data Hub, flows into spoke models, and can be exported to BI tools or data lakes
+
+Q: What is an ETL pipeline and how is it setup?
+C: (Integration tool selection and flow logic)
+A: ETL stands for Extract, Transform, Load. It’s set up using tools like Boomi or CloudWorks, with mappings and schedules for automated flow into Anaplan
+
+Q: How is data orchestration setup as it pertains to Workday to CDP to Anaplan?
+C: (Enterprise-level integration flow awareness)
+A: Workday feeds into a CDP (e.g., Snowflake) where data is staged and enriched. That data is then pushed to Anaplan’s Data Hub via APIs or CloudWorks for planning
+
+------------------------------------
+--- Performance & Best Practices ---
+------------------------------------
 
 Q: What are some best practices for improving model performance?
-C: (Shows awareness of scalability and efficiency)
-A: Avoid using SELECT function; Using system modules to centralize logic and avoid duplication; Minimizing use of TEXT and IF THEN ELSE statements in large calculations; Applying 
-summary methods appropriately; Avoiding unnecessary dimensions in modules; Using line item subsets and views efficiently; Keeping the model clean by archiving unused lists, 
-modules, and actions; These practices help improve speed, scalability, and maintainability.
+C: (Scalability and efficiency awareness)
+A: Use system modules, limit TEXT and IF/ELSE usage, minimize dimensions, apply appropriate summary methods, and archive unused objects regularly
