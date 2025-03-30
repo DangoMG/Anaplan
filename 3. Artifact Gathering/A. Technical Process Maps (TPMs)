@@ -1,41 +1,42 @@
 📄 Technical Process Map (TPM)
 
 Purpose
-A Technical Process Map (TPM) documents the step-by-step logic and data flow of a business process before building it in Anaplan. It helps ensure alignment across business and technical stakeholders and serves as the build blueprint.
+A Technical Process Map (TPM) documents the step-by-step logic and data flow of a business process before building it in Anaplan 
+It helps ensure alignment across business and technical stakeholders and serves as the build blueprint
 
 🔧 How to Create a TPM
-Understand the Business Process
-Interview SMEs
-Observe current process (manual or system-based)
-Identify inputs, calculations, and outputs
-Draft the Flow
-Break down the process into clear steps
-Map inputs (source systems or lists), transformations (calculations), and outputs (UX or exports)
-List modules and line items needed per step
-Keep It Simple
-Use short sentences or bullet points
-Avoid over-explaining formulas—just reference them
-Use “Input → Logic → Output” format per step
+  > Understand the Business Process
+  > Interview SMEs
+  > Observe current process (manual or system-based)
+  > Identify inputs, calculations, and outputs
+  > Draft the Flow
+  > Break down the process into clear steps
+  > Map inputs (source systems or lists), transformations (calculations), and outputs (UX or exports)
+  > List modules and line items needed per step
+  > Keep It Simple
+  > Use short sentences or bullet points
+  > Avoid over-explaining formulas—just reference them
+  > Use “Input → Logic → Output” format per step
 
 📥 Intake Items (Before Building)
-Business objective
-User stories or use cases
-Key assumptions
-Required inputs and their sources
-Desired outputs (reports, dashboards, exports)
-Stakeholders and approvers
-Security/access requirements
-Expected update frequency (daily, monthly, etc.)
+ > Business objective
+ > User stories or use cases
+ > Key assumptions
+ > Required inputs and their sources
+ > Desired outputs (reports, dashboards, exports)
+ > Stakeholders and approvers
+ > Security/access requirements
+ > Expected update frequency (daily, monthly, etc.)
 
 📣 Socializing the TPM
-Review with SME and confirm logic
-Review with Architect/Builder to align on feasibility
-Capture open questions and decisions
-Final sign-off before build starts
+ > Review with SME and confirm logic
+ > Review with Architect/Builder to align on feasibility
+ > Capture open questions and decisions
+ > Final sign-off before build starts
 
 ✅ Tips for a Successful TPM
-Write for someone not in the meeting—TPM should speak for itself
-Don’t skip edge cases—document exceptions and data anomalies
-Highlight dependencies (e.g. relies on Data Hub load)
-Use consistent formatting (module names, dimensions)
-Save version history (TPM v1, v2, etc.)
+ > Write for someone not in the meeting—TPM should speak for itself
+ > Don’t skip edge cases—document exceptions and data anomalies
+ > Highlight dependencies (e.g. relies on Data Hub load)
+ > Use consistent formatting (module names, dimensions)
+ > Save version history (TPM v1, v2, etc.)
