@@ -5,6 +5,10 @@ A Technical Process Map (TPM) documents the step-by-step logic and data flow of 
 It helps ensure alignment across business and technical stakeholders and serves as the build blueprint
 
 🔧 How to Create a TPM
+  ** This is visualization used to show data flow from upstream-most environment to the downstream-most**
+    -- In simpler terms, imagine you have Workday data that flows to PowerBI with Anaplan in the middle 
+        -- Your job is simply to show how that data flows using arrows in a chronological manner
+        -- We will show you how to get there with examples but this page serves as checklist for now!
   > Understand the Business Process
   > Interview SMEs
   > Observe current process (manual or system-based)
