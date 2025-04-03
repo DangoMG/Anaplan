@@ -19,3 +19,43 @@ These wireframes help align business users and Anaplan model builders on page st
   - Figma  
   - Visio
 
+🧩 Wireframes
+Purpose
+Wireframes visually represent the layout and navigation of Anaplan pages and dashboards before development begins. They ensure alignment on UX design, user roles, and data flow before a single module is built.
+
+✍️ How to Create a Wireframe
+Start with the User
+Who is the user (role)?
+What decisions or actions will they take on this page?
+Define Page Type
+Worksheet: For data entry, heavy analysis
+Board: For dashboards, visual storytelling
+Report: For polished executive summaries
+Layout the Structure
+Header: Page title, selectors (Time, Version, Cost Center, etc.)
+Body: Grids, charts, cards, KPIs, filters
+Footer (optional): Notes, links, comments
+Mock Before You Build
+Use Miro, Figma, Lucidchart, or even PowerPoint
+Keep it low-fidelity—boxes, labels, arrows are enough
+
+📥 Intake Items (Before Wireframing)
+Persona or user role
+Page objectives
+KPIs or summary metrics
+Editable vs. read-only requirements
+Required filters (time, versions, regions, etc.)
+Expected navigation flow (drill-downs, links)
+
+📣 Socializing the Wireframe
+Walk through wireframe with end users early
+Align with model builders on feasibility
+Capture feedback and revise before development
+Link the final wireframe to the TPM for traceability
+
+✅ Tips for a Successful Wireframe
+Less is more—highlight key data, hide noise
+Use consistent terms (e.g. “Department” vs. “Cost Center”)
+Group related data—use sections or tabs
+Keep a clean visual hierarchy (title → filters → data → insights)
+Design mobile-friendly if applicable
