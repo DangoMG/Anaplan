@@ -1,1 +1,108 @@
+🔐 OAUTH 2.0 SETUP GUIDE: Secure API Integration with Anaplan
+  - This guide walks you through the OAuth 2.0 Client Credentials Grant setup in Anaplan to enable secure, 
+    service-account–based authentication for integrations (e.g., with Snowflake, AWS Lambda, Azure, Boomi, Python scripts, etc.)
 
+🧭 1. Overview of OAuth 2.0 in Anaplan
+  - Grant Type Used: Client Credentials (non-interactive, for system-to-system)
+  - Use Case: Replaces Basic Auth for automated jobs (data integrations, CI/CD jobs)
+  - Actors Involved:
+    - Client App (external system calling Anaplan API)
+    - Authorization Server (Anaplan)
+    - Resource Server (Anaplan REST API)
+
+📋 2. Prerequisites
+  - Workspace Admin privileges in Anaplan
+  - Access to the Anaplan Administration Console
+  - A user account tied to a Service Principal (no interactive logins)
+  - External integration platform (e.g., Postman, Python, Boomi, or Anaplan Connect)
+
+⚙️ 3. Step-by-Step Setup Instructions
+  🔧 Step 1: Register a New Integration Client
+      1) Go to Anaplan Admin Console
+      2) Navigate to Authentication > Integration Clients
+      3) Click "Add Integration Client"
+      4) Fill in the required fields:
+        - Name: My_Snowflake_Integration
+        - Description: Snowflake to Anaplan OAUTH2 connection
+        - Authentication Method: OAuth 2.0
+      5) Copy and securely store the generated:
+        - Client ID
+        - Client Secret
+        - Token URL: https://auth.anaplan.com/token/authenticate
+    
+  🔑 Step 2: Assign the Integration Client to a User
+    1) Go to Access Control > Users
+    2) Select a user to act as the Service Principal
+    3) Under Authentication Methods, click Add Integration Client
+    4) Assign the newly created Client ID
+    5) Save
+  🔒 This user must have appropriate Workspace/Model roles for any data access
+  
+  🧪 Step 3: Test OAuth Token Retrieval (Postman Example)
+    Set POST request to:
+      - https://auth.anaplan.com/token/authenticate
+      - Set Body → x-www-form-urlencoded:
+          grant_type=client_credentials
+          client_id=YOUR_CLIENT_ID
+          client_secret=YOUR_CLIENT_SECRET
+      - Click Send
+      
+      Response will include:
+        {
+          "token_type": "Bearer",
+          "expires_in": 3600,
+          "access_token": "eyJ0eXAiOiJK..."
+        }
+  
+  📡 Step 4: Use Access Token in Anaplan API Calls
+    - Add the access token to the Authorization header for all Anaplan API requests:
+      Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhb...
+  
+    - Example GET request to list workspaces:  
+      GET https://api.anaplan.com/2/0/workspaces
+      Authorization: Bearer eyJ0eXAiOiJK...
+
+🔁 4. Token Management Best Practices
+  - Token expiration: 1 hour (3600 seconds)
+  - Use automation to refresh token before expiry
+  - Never hard-code credentials — use secrets management tools (e.g., AWS Secrets Manager, Azure Key Vault)
+  - Log token generation attempts for auditing
+
+🧰 5. Python Script Example
+  import requests
+  
+  def get_access_token(client_id, client_secret):
+      url = 'https://auth.anaplan.com/token/authenticate'
+      data = {
+          'grant_type': 'client_credentials',
+          'client_id': client_id,
+          'client_secret': client_secret
+      }
+      response = requests.post(url, data=data)
+      return response.json()['access_token']
+  
+  token = get_access_token('YOUR_CLIENT_ID', 'YOUR_CLIENT_SECRET')
+  headers = {'Authorization': f'Bearer {token}'}
+  resp = requests.get('https://api.anaplan.com/2/0/workspaces', headers=headers)
+  print(resp.json())
+
+🧠 6. Troubleshooting Tips
+  Error                    |  Likely Cause                                 | 	Fix
+  401 Unauthorized         |  Invalid client credentials or expired token  |  Regenerate token
+  403 Forbidden            |  User lacks model/workspace access            |  Check roles in Anaplan
+  Invalid client           |  Client ID not assigned to user               |  Re-check Admin Console assignment
+  unsupported_grant_type   |  Typo in grant_type or wrong content type     |  Should be client_credentials
+
+🛡️ 7. Security Considerations
+  - Rotate client secrets periodically
+  - Lock down Anaplan access to specific roles
+  - Disable unused OAuth clients
+  - Audit token generation and API usage logs
+
+✅ 8. Checklist Summary
+  ✅ Item	Description
+    🔲	Registered integration client in Anaplan
+    🔲	Assigned client to a service user
+    🔲	Confirmed correct workspace/model access
+    🔲	Tested token generation and API call
+    🔲	Implemented automated token refresh process
