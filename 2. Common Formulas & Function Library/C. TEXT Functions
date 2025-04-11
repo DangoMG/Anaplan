@@ -1,1 +1,64 @@
+🔤 TEXT() FUNCTION GUIDE: Technical & Functional Deep Dive
+  - The TEXT() function in Anaplan is a powerful tool for converting numbers, dates, booleans, and other data types into strings
+  - This guide explains when, how, and why to use it across different modeling scenarios
 
+🧠 FUNCTIONAL OVERVIEW
+  TEXT(value)
+  - Purpose: Converts a value of any type (Number, Date, Boolean, etc.) into Text (string) format
+  - Data Type Returned: Text
+  - Syntax Simplicity: One of the simplest but most essential functions in Anaplan
+
+🧪 TECHNICAL USE CASES
+  Use Case	                         | Example	                             | Output
+  Convert Number to Text	           | TEXT(2024)	                           | "2024"
+  Convert Boolean to Text	           | TEXT(TRUE)                            | 	"TRUE"
+  Convert Date to Text	             | TEXT(DATE(2025, 04, 11))	             | "04/11/2025"
+  Convert from List-formatted item	 | TEXT(Employee List Item)	             | "John Smith"
+  Use with FIND	                     | FIND("2025", TEXT(Date Line Item))	   | 1
+  Use to Join Val                    | TEXT(Revenue) & "-" & TEXT(Cost)    	 | "120000-56000"
+
+🔧 COMMON PATTERNS
+  ✅ 1. Mapping and Concatenation
+    TEXT(Country Code) & "-" & TEXT(Employee Code)
+    📌 Use to create compound keys or identifiers (e.g., US-EMP123)
+  
+  ✅ 2. Conditional Export Values
+    IF Include? THEN TEXT(Salary) ELSE "N/A"
+    📌 Output can be export-ready, especially for reporting modules or integration views
+  
+  ✅ 3. Snapshot for Archiving
+    "Snapshot as of " & TEXT(CURRENTPERIODSTART())
+    📌 Append date-based metadata to exported snapshot files
+
+✅ 4. Boolean to Text
+  IF Flag THEN "Yes" ELSE "No"
+  -- OR --
+  TEXT(Flag)
+  📌 Useful when feeding values to external BI tools or CSV exports that need "Yes"/"No" values
+
+⚠️ LIMITATIONS
+  Limitation	              | Explanation
+  No formatting control     | You cannot control number of decimals, currency, or locale (e.g., 2.50 → "2.5")
+  Not reversible	          | Cannot convert back to number (use original source instead)
+  Increased memory	        | Avoid overuse in large models; TEXT is heavier than native formats
+  Not sortable numerically	| "100" comes before "20" as text, unlike numbers
+
+🧰 BEST PRACTICES
+  - Only use TEXT() when string output is explicitly needed (e.g., external exports, concatenation, flags)
+  - Avoid using TEXT() inside calculations where numeric context is preferred
+  - Don’t rely on TEXT() for formatting numbers — instead, format in the export file or reporting layer (e.g., Power BI)
+  - Use naming conventions like txt_ prefix for clarity (e.g., txt_SnapshotID)
+
+🧠 DEEP DIVE: TEXT() + INTEGRATIONS
+  - Anaplan external tools (Power BI, Snowflake, APIs) often expect clean string values
+  - Export_View: 
+     "EmployeeID-" & TEXT(Emp Code) & "-" & TEXT(Hire Date)
+     🔒 Ensures consistency when matching fields across systems (especially when exporting to CSV/JSON)
+
+✅ FUNCTION SUMMARY
+  Input   | Type	                  | Example	Output
+  Number  |	TEXT(1234.5)	          | "1234.5"
+  Date    | TEXT(DATE(2024,12,01))	| "12/01/2024"
+  Boolean |	TEXT(TRUE)	            | "TRUE"
+  List	  | TEXT('Region List'.US)	| "US"
+  Null	  | TEXT(BLANK)	            | "" (empty string)
