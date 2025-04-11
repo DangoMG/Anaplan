@@ -1,1 +1,111 @@
+📊 ANAPLAN TO POWER BI: Direct Data Integration Guide
+  - This guide explains how to set up a secure, automated pipeline from Anaplan to Power BI, leveraging Anaplan's REST API, 
+    OAuth 2.0, and Power BI’s custom connector or gateway setup.
 
+🧭 1. Architecture Overview
+  Anaplan Model (Saved View) 
+      ⬇
+  Anaplan Export Action (CSV or JSON)
+      ⬇
+  Anaplan REST API (OAuth 2.0 Token Auth)
+      ⬇
+  Power BI (via Power Query M Script or Custom Connector)
+
+  - Format Supported: CSV (recommended), JSON
+  - Integration Style: API-based Pull (preferred over manual export)
+  - Security: OAuth 2.0 (Client Credentials)
+
+🧰 2. Prerequisites
+  - Anaplan Workspace Admin privileges
+  - Anaplan OAuth 2.0 credentials (see OAUTH2_SETUP_GUIDE.md)
+  - Created and tested Export Actions in Anaplan
+  - Power BI Desktop (latest version)
+  -- Optional: Power BI Gateway for scheduled refreshes
+
+🛠️ 3. Anaplan Side Configuration
+  ✅ A. Create a Saved View & Export Action
+    - In your target model, create a Saved View with filtered data (e.g., EXP_Actuals_YTD)
+      Go to Actions > Export → Create New Export:
+      1) Format: CSV
+      2) Label: Export_Actuals_YTD
+      3) Save and test the action
+
+  ✅ B. Get Export Metadata
+    Use Anaplan API to retrieve:
+    - Workspace ID
+    - Model ID
+    - Export ID
+
+  You can use:
+  > GET https://api.anaplan.com/2/0/workspaces
+  > GET https://api.anaplan.com/2/0/workspaces/{workspaceId}/models
+  > GET https://api.anaplan.com/2/0/models/{modelId}/exports
+
+⚙️ 4. Power BI Connection Methods
+  🔗 A. Option 1: Power Query M Script (No Custom Connector)
+  Use Web.Contents with OAuth2 headers to pull data directly: 
+      let
+          // Replace with your token fetch logic or static token (test only)
+          AccessToken = "Bearer eyJ0eXAiOiJKV1Qi...",
+          Source = Web.Contents(
+              "https://api.anaplan.com/2/0/workspaces/{workspaceId}/models/{modelId}/exports/{exportId}/tasks",
+              [
+                  Headers = [
+                      Authorization = AccessToken,
+                      Accept = "application/json"
+                  ]
+              ]
+          )
+      in
+          Source
+  🔐 Tip: Use Power Automate or Azure Functions to retrieve fresh tokens and inject them into Power BI Service for scheduled refresh.
+  
+  🔧 B. Option 2: Build a Power BI Custom Connector
+  If you're looking for a reusable and secured integration:
+    - Use Power Query SDK in Visual Studio Code
+    - Build connector with:
+    - OAuth 2.0 token injection
+    - Workspace/Model/Export dropdown selectors
+    - Deploy via organizational Power BI Gateway
+
+⏱️ 5. Automating the Export + Load
+  Use Anaplan API to launch export action:
+  > POST https://api.anaplan.com/2/0/models/{modelId}/exports/{exportId}/tasks
+  
+  Poll for completion:
+  > GET https://api.anaplan.com/2/0/models/{modelId}/exports/{exportId}/tasks/{taskId}
+  
+  Download the file:
+  > GET https://api.anaplan.com/2/0/models/{modelId}/exports/{exportId}/tasks/{taskId}/dump
+  
+  You can automate this flow using:
+  - Python (requests + pandas) → write directly to .csv or SQL
+  - Azure Data Factory → store in Blob → Power BI reads from Blob
+  - AWS Lambda + S3 → push dump → Power BI fetches from S3
+
+🔐 6. Security Considerations
+  - Never expose client_secret in Power BI directly
+  - Use Azure Key Vault or Power Automate Flow to secure token retrieval
+  - Rotate secrets every 90 days
+  - Ensure Anaplan export users have read-only access to the relevant models
+
+🧪 7. Testing & Validation
+  Test                | Method
+  Can fetch token	    | Postman or Python
+  Export Action works |	Via Anaplan GUI
+  API pulls file	    | API GET dump response
+  Power BI reads file	| via connector or Power Query
+
+💡 8. Pro Tips
+  - Keep your export actions static (no dropdowns, no UI prompts)
+  - For large models, break exports into modular files by time or region
+  - Consider Azure Blob or S3 as intermediate staging zones
+  - Document and version your exports (e.g., Export_Forecast_Q2_2025)
+
+✅ 9. Deployment Checklist
+  ✅ Task	Description
+    🔲 Export created and tested in Anaplan	
+    🔲 OAuth token tested via Postman	
+    🔲 Export ID verified via API	
+    🔲 Power BI can fetch/export data	
+    🔲 Gateway scheduled refresh setup (if needed)
