@@ -1,1 +1,75 @@
-Coming soon...
+🧠 DATA HUB 411: How to Build & Maintain a Scalable Anaplan Data Hub
+  - A Data Hub is a centralized model that stores, cleanses, and distributes master and transactional data to spoke models
+  - It is the backbone of an effective multi-model Anaplan architecture
+
+📌 1. Purpose of the Data Hub
+  - Single source of truth for master and transactional data
+  - Decouples data ingestion from business logic
+  - Reduces model size in spoke models through selective data transfer
+  - Improves performance by minimizing redundancy and isolating transformation logic
+
+📦 2. Key Components of a Data Hub
+  Component	Purpose
+    - Saved Views	Used to export cleaned or filtered data to spoke models
+    - Import Staging Modules	Temporarily stores raw input from external systems
+    - Transformation Modules	Performs mappings, filters, or value normalizations
+    - Master Lists	Contains metadata and unique key hierarchies
+    - Time Settings	May include SYS Time modules for tracking snapshot logic
+    - Code-Driven Lists	Used for identifying records uniquely and efficiently
+    - Export Actions	Scheduled exports or manual pushes to spoke models
+    - Line Item Subsets (LISS)	Helps modularize calculations & versioning
+
+⚙️ 3. Import Best Practices
+  - Use code-based imports rather than name-based to maintain stability
+  - Always import to flat lists first, then build hierarchies using system modules
+  - Use numbered lists for large transactional data (e.g., employee records)
+  - Include metadata columns (created date, source system, flags)
+  - Create a SYS module per list for properties, hierarchy mapping, and filters
+
+🧮 4. Example Module Structure
+  📁 Modules
+  ├── IMP01_Employee_RawData       (Staging)
+  ├── SYS01_Employee_Properties    (Properties)
+  ├── SYS02_Employee_Hierarchy     (Parent mapping)
+  ├── EXP01_Employee_To_Spoke      (Export views)
+
+🧰 5. Data Cleansing & Transformation
+  - Remove blanks/nulls using boolean filters
+  - Normalize text (e.g., UPPER, LOWER) for system consistency
+  - Build mappings for:
+    - Country → Region
+    - GL Account → Reporting Category
+    - Cost Center → Business Unit
+    -- Include default/fallback logic in case mappings fail
+
+🔁 6. Integration Flow
+  - [Source System] → [Data Hub Staging Module] → [Cleaned SYS Module] → [Saved View] → [Spoke Model Import Action]
+  - Use Anaplan Connect, MuleSoft, Boomi, or API integrations to automate file ingestion and distribution
+
+🔒 7. Security & Access
+  - Use minimal access roles — no business users should access the Data Hub directly
+  - Set up model-to-model imports with dedicated integration users
+  - Do not apply user-level access controls here; apply them in spoke models instead
+
+📉 8. Performance Optimization
+  - Avoid hierarchical lists unless needed — use flat lists and mapping modules
+  - Use text list avoidance wherever possible
+  - Use batch imports/exports during low-usage periods (off hours)
+  - Archive old transactional data by exporting and purging based on snapshot logic
+
+📤 9. Export Strategy
+  - Export only what’s needed (e.g., filter on Current Period, Active Employees)
+  - Version your exports using suffixes like _v1, _FY25, etc
+  - Always name saved views clearly (EXP_ActiveEmployees_FY25)
+
+🧪 10. Validation & Testing
+  - Build QA dashboards in the Data Hub for:
+    - Record counts vs source system
+    - Delta checks (last import vs current)
+    - Invalid mappings or blanks
+    - Automate error logging (e.g., unmapped items, duplicates)
+
+🧠 Pro Tips
+  - Use ALM wisely: Treat the Data Hub as non-production unless it contains business logic
+  - Minimize logic: Push logic to spoke models unless it applies to all downstream models
+  - Snapshot modules: Store time-based versions for comparison (e.g., prior month employee list)
