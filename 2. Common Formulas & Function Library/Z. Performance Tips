@@ -1,1 +1,90 @@
-Coming soon...
+⚡ PERFORMANCE TIPS: Building Faster, Smarter Anaplan Models
+  - This guide provides proven strategies to optimize Anaplan model performance, from formula design to model architecture, 
+    helping you reduce calculation times, avoid workspace limits, and improve end-user experience
+
+🧠 CORE PRINCIPLES
+  - Minimize Model Size
+  - Reduce Calculation Complexity
+  - Control Dimensionality
+  - Use Booleans & Conditional Logic Wisely
+  - Avoid Repeating Calculations
+  - Benchmark & Monitor
+
+🚧 1. MODEL DESIGN DOs & DON'Ts
+  ✅ Do  |  🚫 Don’t
+  Use flat lists and system modules for properties  |  Store properties directly in lists
+  Normalize inputs in the Data Hub  |  Normalize/transform in the spoke
+  Use Line Item Subsets for conditional logic  |  Create separate line items per logic block
+  Keep calculations modular and clean  |  Create long chained formulas
+  Set summary methods to 'None' by default  |  Leave summaries on unnecessarily
+
+🔬 2. FORMULA OPTIMIZATION
+  ✅ Best Practices
+    - Split complex logic into intermediate line items
+    - Reuse line items to avoid recalculating the same formula
+    - Place IF statements early to short-circuit logic:
+      > IF NOT Active? THEN 0 ELSE Long_Formula
+    - Use Booleans for filtering & visibility logic instead of IF THEN ELSE
+    - Avoid formulas referencing multiple large modules with different dimensions
+
+🚨 Watch Out For:
+  - TEXT(), FIND(), and SEARCH() functions — memory intensive
+  - Circular references
+  - Excessive use of SELECT, LOOKUP, SUM in a single formula
+
+🧮 3. DIMENSIONS & SPARSITY CONTROL
+  Optimization Area  | 	Tip
+  Dimensionality  |  Avoid over-dimensioning; don’t mix unrelated dimensions
+  Time  |  Use Time Ranges to limit scope
+  Users List  |  Keep as small as possible (applies to DCA)
+  Versioning  |  Use switchover + fake version logic when applicable
+
+⛔ 4. SUMMARY METHODS
+  Line Item Type  |  Default Summary
+  Number  |  None unless needed
+  Boolean  |  ANY, ALL if needed, else None
+  Text  |  None (avoid summarizing text)
+  -- Rule: Turn off summary methods unless explicitly required for dashboards or exports
+
+📤 5. DATA IMPORTS & EXPORTS
+  - Use code-based imports (faster + more stable than name-based)
+  - Avoid importing from views with filters or large dimensions
+  - Turn off summary methods in import source modules
+  - Use simple views for exports (only needed line items and rows)
+
+🔄 6. CALCULATION ENGINE TIPS
+  - Avoid volatile logic across many cells (especially in large grids)
+  - Trigger recalculations via booleans instead of data cell changes
+  - Schedule batch jobs during off-hours to reduce user latency
+  - Keep data flows one-directional (e.g., Data Hub → Spoke)
+
+📊 7. DASHBOARD/UX PERFORMANCE
+  Best Practice 	|  Why
+  Keep cards lightweight (limit rows/columns)  |  Faster load/render time
+  Avoid dynamic selectors on massive lists  |  Can stall user interaction
+  Pre-filter views in modules  |  Less UI burden on filter logic
+  Use linked navigation instead of nested pages  |  Reduces load chaining
+
+🧩 8. ADVANCED STRATEGIES
+  - Use calculation scoping (custom booleans to limit formula triggers)
+  - Build aggregation layers (e.g., summarize region totals in one module, reuse across others)
+  - Use fake versions to simulate scenario planning without full versioning overhead
+  - Periodically archive or delete unused data (historical snapshots, staging lists)
+
+📈 9. TESTING & MONITORING TOOLS
+  Tool  |  Usage
+  Model Open Time  |  Monitor initial load size/performance
+  Model Map  |  Identify dependency chains and bottlenecks
+  Cell Count Viewer  |  Gauge module bloat
+  History Log  |  Identify recent changes impacting performance
+  Workspace Size  |  Monitor near-limit usage (10GB+ flags risk)
+
+✅ 10. PERFORMANCE CHECKLIST
+  ✅ Check	Description
+    🔲 Line items summarized only where needed	
+    🔲 Avoided nested IF THEN ELSE chains	
+    🔲 Time Ranges applied to all applicable modules	
+    🔲 Boolean line items used for filters and triggers	
+    🔲 Text and list formatting minimized in core logic	
+    🔲 Formulas are broken down for reuse/modularity	
+    🔲 Imports/exports are fast and cleanly structured	
